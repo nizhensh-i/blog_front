@@ -22,6 +22,7 @@
     "nodemon": "^3.1.7",
     "pinia": "^2.2.2",
     "vant": "^4.9.15",
+    "vditor": "^3.10.9",
     "vue": "^3.3.4",
     "vue-amazing-ui": "^2.1.4",
     "vue-router": "^4.2.5",

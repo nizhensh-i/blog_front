@@ -69,6 +69,16 @@ export default {
       v-if="activeRichEditor"
       @content_change="(n) => (this.rich_content = n)"
     />
+    <!-- <RichText
+      ref="rickText"
+      v-if="activeRichEditor"
+      v-model="content"
+      :options="{
+        height: 560, // 高度
+        outline: { enable: true, position: 'right' } // 大纲
+      }"
+    /> -->
+   
     <el-input
       v-else
       v-model="content"
