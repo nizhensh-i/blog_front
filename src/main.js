@@ -26,6 +26,7 @@ import 'vant/lib/index.css'
 const app = createApp(App)
 const pinia = createPinia()
 
+
 app.config.globalProperties.$dayjs = dayjs
 app.config.globalProperties.$message = ElMessage
 app.use(useElementPlus)
