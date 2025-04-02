@@ -6,6 +6,8 @@ import { GradientText } from 'vue-amazing-ui'
 import 'vue-amazing-ui/es/gradienttext/GradientText.css'
 import SkeletonUtil from '@/utils/components/SkeletonUtil.vue'
 import PostPublish from './PostPublish.vue'
+import { useUserStore } from '@/stores/persist'
+
 export default {
   components: {
     PostCard,
@@ -28,7 +30,8 @@ export default {
   },
   setup() {
     const currentUser = useCurrentUserStore()
-    return { currentUser }
+    const storeUser = useUserStore()
+    return { currentUser, storeUser }
   },
   mounted() {
     this.currentUser.loadToken()
@@ -38,6 +41,18 @@ export default {
     this.getPosts(this.currentPage, this.activeName)
   },
   methods: {
+    setToken(){
+      this.storeUser.setToken('666,dev')
+    },
+    updateToken(){
+      this.storeUser.accessToken = 'update'
+    },
+    deleteToken(){
+      localStorage.removeItem('persistDev')
+    },
+    setName(){
+      this.storeUser.setName('张三')
+    },
     changeTab(tabName) {
       this.getPosts(this.currentPage, tabName)
     },
@@ -64,6 +79,11 @@ export default {
 </script>
 
 <template>
+  <el-button @click="setToken">设置token</el-button>
+  <el-button @click="updateToken">修改Token</el-button>
+  <el-button @click="deleteToken">删除Token</el-button>
+  <el-button @click="setName">设置name</el-button>
+  {{ storeUser.accessToken }}
   <GradientText
     class="gradient-text"
     :size="28"
