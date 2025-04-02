@@ -6,7 +6,7 @@ import { GradientText } from 'vue-amazing-ui'
 import 'vue-amazing-ui/es/gradienttext/GradientText.css'
 import SkeletonUtil from '@/utils/components/SkeletonUtil.vue'
 import PostPublish from './PostPublish.vue'
-import { useUserStore } from '@/stores/persist'
+import { useMain, useTest, useTest1 } from '@/stores/morePersist'
 
 export default {
   components: {
@@ -30,8 +30,10 @@ export default {
   },
   setup() {
     const currentUser = useCurrentUserStore()
-    const storeUser = useUserStore()
-    return { currentUser, storeUser }
+    const main = useMain()
+    const test = useTest()
+    const test1 = useTest1()
+    return { currentUser, main, test, test1 }
   },
   mounted() {
     this.currentUser.loadToken()
@@ -42,13 +44,16 @@ export default {
   },
   methods: {
     setToken(){
-      this.storeUser.setToken('666,dev')
+      this.test.age = 20
     },
     updateToken(){
-      this.storeUser.accessToken = 'update'
+      this.test.age = 25
     },
     deleteToken(){
       localStorage.removeItem('persistDev')
+    },
+    setMain(){
+      this.main.test = '1111'
     },
     setName(){
       this.storeUser.setName('张三')
@@ -83,7 +88,9 @@ export default {
   <el-button @click="updateToken">修改Token</el-button>
   <el-button @click="deleteToken">删除Token</el-button>
   <el-button @click="setName">设置name</el-button>
-  {{ storeUser.accessToken }}
+  {{ test.age }}
+  <el-button @click="setMain">设置main</el-button>
+  <div>{{ main.test }}</div>
   <GradientText
     class="gradient-text"
     :size="28"

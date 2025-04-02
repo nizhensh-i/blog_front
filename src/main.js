@@ -4,6 +4,7 @@ import App from './App.vue'
 import router from './router'
 import { createPinia } from 'pinia'
 import piniaPersist from 'pinia-plugin-persist-uni'
+import piniaPlugin from '@/utils/piniaPlugin'
 import dayjs from './config/dayjsCfg'
 
 import 'element-plus/theme-chalk/dark/css-vars.css'
@@ -33,7 +34,28 @@ const app = createApp(App)
 app.directive('slide-in',vSlideIn)
 
 const pinia = createPinia()
-pinia.use(piniaPersist)
+// pinia.use(piniaPersist)
+pinia.use(
+    piniaPlugin({
+      key: 'morePersist', // 这是给缓存到本地时，加一个特殊的前缀，以免造成污染到其他缓存数据
+      storeList: [
+        {
+          storeName: ['main'], // 对于特定store进行持久化，空或者不传，则对所有的store进行缓存到本地
+          storageType: 'localStorage',
+          path: ['test'] // 需要持久化的属性
+        },
+        {
+          storeName: ['test'], // 对于特定store进行持久化，空或者不传，则对所有的store进行缓存到本地
+          storageType: 'localStorage',
+          path: ['age'] 
+        },
+        {
+          storeName: ['test1'], // 对于特定store进行持久化，空或者不传，则对所有的store进行缓存到本地
+          storageType: 'localStorage'
+        }
+      ]
+    })
+  )
 
 app.config.globalProperties.$dayjs = dayjs
 app.config.globalProperties.$message = ElMessage
