@@ -25,8 +25,7 @@ import 'vue-amazing-ui/es/scrollbar/Scrollbar.css'
 
 <style scoped>
 body {
-  /* 移动端点击可点击元素时，出现蓝色默认背景色 */
-  -webkit-tap-highlight-color: transparent;
+  font-size: 30px;
 }
 .el-header {
   height: 45px;

@@ -4,7 +4,7 @@ import App from './App.vue'
 import router from './router'
 import pinia from './stores/index.js'
 import dayjs from './config/dayjsCfg'
-
+import './style/global.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 
 import { ElMessage } from 'element-plus'
