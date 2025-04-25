@@ -17,12 +17,14 @@ import { loginReminder } from '@/utils/common.js'
 import uploadApi from '@/api/upload/uploadApi.js'
 import { v4 as uuidv4 } from 'uuid'
 import * as qiniu from 'qiniu-js'
+import Book from '@/views/user/components/book.vue'
 
 export default {
   components: {
     PostCard,
     PageHeadBack,
-    SkeletonUtil
+    SkeletonUtil,
+    Book
   },
   data() {
     return {
@@ -391,6 +393,7 @@ export default {
         </el-card>
       </template>
     </el-skeleton>
+    <Book/>
 
     <SkeletonUtil :loading="loading.userData" :row="5" :count="1" :showAvatar="false">
       <PostCard

@@ -11,7 +11,7 @@ import 'vue-amazing-ui/es/scrollbar/Scrollbar.css'
     </el-header>
     <el-divider />
     <el-main>
-      <Scrollbar ref="scrollbar" class="Scrollbar">
+      <Scrollbar ref="scrollbar" class="scrollbar" style="--scrollbar-color: rgba(0, 0, 0, 0)">
         <router-view v-slot="{ Component, route }">
           <keep-alive>
             <component v-if="route.meta.keepAlive" :is="Component" :key="route.name" />
@@ -30,15 +30,15 @@ body {
 }
 .el-header {
   height: 45px;
-  padding:0px;
+  padding: 0px;
 }
-.el-main{
+.el-main {
   padding: 10px 20px 0px 20px;
 }
 /* 45px header高度
      3vh 是随机添加的
   */
-.Scrollbar {
+.scrollbar {
   height: calc(100vh - 45px - var(--el-main-padding) * 2 - 3vh);
 }
 
