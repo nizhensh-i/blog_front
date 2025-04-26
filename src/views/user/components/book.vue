@@ -26,7 +26,7 @@ export default {
 </script>
 
 <template>
-  <el-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
+  <el-tabs v-model="activeName" class="demo-tabs" >
     <el-tab-pane label="喜欢的电影" name="first">
       <el-row :gutter="1" class="bookshelf">
         <el-col :span="8" v-for="(book, index) in books" :key="index">
@@ -44,13 +44,13 @@ export default {
       </el-row>
     </el-tab-pane>
 
-    <el-tab-pane label="电视剧" name="second">电视剧</el-tab-pane>
-    <el-tab-pane label="综艺" name="third">综艺</el-tab-pane>
+    <el-tab-pane label="在看的书籍" name="second">书籍</el-tab-pane>
   </el-tabs>
 </template>
 <style lang="scss" scoped>
 .el-tabs {
   height: 300px;
+  margin: 20px 0px;
 }
 .bookshelf {
   width: 100%;
@@ -68,7 +68,7 @@ export default {
     position: absolute;
     color: green;
     left: 2px;
-    top: -1px;
+    top: 0px;
     z-index: 2;
   }
   .el-image {
