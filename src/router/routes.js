@@ -157,6 +157,11 @@ const routes = [
         name: 'register',
         component: () => import('../views/login/RegisterPage.vue')
       },
+      {
+        path: '/gsap',
+        name: 'gsap',
+        component: () => import('../views/animate/Gsap.vue')
+      },
       ...updateUser,
       ...setting,
       ...error,
